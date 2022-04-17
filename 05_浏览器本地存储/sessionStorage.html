@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage</title>
+</head>
+<body>
+    <h2>sessionStorage</h2>
+    <button onclick="saveData()">点我保存一个数据</button>
+    <button onclick="readData()">点我读取一个数据</button>
+    <button onclick="deleteData()">点我删除一个数据</button>
+    <button onclick="clearData()">点我清空一个数据</button>
+    <script>
+        // sessionStorage的API：
+            // setItem     --设置一个值（键值对 key:,value:）
+            // getItem     --读取一个值 (键 key:) 没有值的话返回null
+            // removeItem  --删除一个值 (键 key:)
+            // key
+            // clear       --清空数据
+        let p={name:'张三',age:18}
+        function saveData(){
+            sessionStorage.setItem('msg','你好')
+            // JSON.stringify() -- 能将一个对象变成字符串的形式并且展示出来里面的内容
+            sessionStorage.setItem('person',JSON.stringify(p))
+        }
+        function readData(){
+           console.log(sessionStorage.getItem('msg'))
+
+           const res= sessionStorage.getItem('person')
+           console.log(JSON.parse(res))
+        }
+        function deleteData(){
+            sessionStorage.removeItem('msg')
+        }
+        function clearData(){
+            sessionStorage.clear()
+        }
+    </script>
+</body>
+</html>
